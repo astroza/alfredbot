@@ -1,0 +1,19 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fastroza",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "bent": "^7.3.12",
+    "express": "^4.17.1",
+    "json-beautify": "^1.1.1",
+    "node-nut": "^1.0.3",
+    "telegraf": "^3.38.0",
+    "telegraf-session-local": "^2.0.0"
+  }
+}
