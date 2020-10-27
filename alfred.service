@@ -1,0 +1,12 @@
+[Unit]
+Description=Alfred Bot
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/alfred
+WorkingDirectory=/root/bot
+Type=Simple
+ExecStart=/usr/local/bin/node /root/bot/bot.js
+
+[Install]
+WantedBy=multi-user.target
