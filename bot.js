@@ -37,8 +37,13 @@ bot.command('/battery', async (ctx) => {
     ctx.reply(`Antes de cualquier cosa usa /login <password>, ${ctx.from.first_name}`)
     return
   }
+  var isEmpty = true;
   for(let upsName in batteryState) {
+      isEmpty = false;
       await ctx.reply(beautify(Object.fromEntries(Object.entries(batteryState[upsName])), null, 2, 100));
+  }
+  if(isEmpty) {
+    await ctx.reply("Aun no recibo reportes :(");
   }
 });
 
@@ -53,6 +58,7 @@ bot.catch((err, ctx) => {
 })
 
 var batteryIsDischarging = {};
+console.log(`For UPS exporter: URL=${URLBase}/${secret}/ups-state`);
 expressApp.post(`/${secret}/ups-state`, async function(request, response) {
   var state = request.body;
   var upsName = state['ups.name'];
@@ -77,4 +83,5 @@ expressApp.post(`/${secret}/ups-state`, async function(request, response) {
   response.send("ok");
 });
 
+bot.launch();
 expressApp.listen(8001);
